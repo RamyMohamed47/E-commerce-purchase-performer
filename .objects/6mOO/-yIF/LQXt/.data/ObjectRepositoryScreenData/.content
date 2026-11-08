@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-16"?>
-<ObjectRepositoryScreenData ContentHash="TYDaC3uE50CCsk29p0tjLw" Reference="Y6t2V4z8mESCz6OvpfNcaw/LQXtcWkeD06XZnDHqOkFiw" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ObjectRepositoryScreenData ContentHash="a-WzGkNSqEekjbMMRBgfXg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <ObjectRepositoryScreenData.Data>
-    <TargetApp x:Key="TargetApp" Area="1911, -9, 1618, 982" BrowserType="Edge" ContentHash="kGXO1sl6EUODu3UVBaP_uQ" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAF3SURBVDhPfVNLK0VRGPUoMWMgGZhISorERPes8gvkkTlDwtiEmSlnjaQYycxAmPgJiAzkdZdESBHFxCOPPu1923d3smp1Hvtb66z97e+UlDhArIa4CvET4k/EL4jDvjYTEAchvmWIjTcQW2JNAYnmyyAuZwg915J8WhHrCoDYAPEsEHxAvIR4DlEQpyA2QmwKWJtcsNQbDDmRN9iF2AyxDmKHe76HeBdwD2K/j78URZ4N0vX+05t9K7Bop8HLF4g9Js5prhTiQobQc8cMRqIvnEDMWdchdkJch3jsPhLW2dFOm8FG5PoO8QHiE8QV14caSwXxMaizPnSZgUWOoxm/IY4FvRiP1jeRT6tswYYkFhtv/fAkSiv/BMXrE955AOI2xIOAhzY8ELshtkPsc8foxXbf5tOZSZX7Fzxtz4sQXyE+u6ttyRtsIZ9WFgxiQKyHeJSxLc/JWFMEmzB3GrHQeA2xNdYUAeKMa+JVQBPaPIwm+bTc1/4C4RnjWlmxHYMAAAAASUVORK5CYII=" Reference="Y6t2V4z8mESCz6OvpfNcaw/LQXtcWkeD06XZnDHqOkFiw" Selector="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" Version="V3">
+    <TargetApp x:Key="TargetApp" Area="1911, -9, 1618, 982" BrowserType="Edge" Selector="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" Url="https://www.saucedemo.com/" Version="V3">
       <TargetApp.SapInfo>
         <SAPElementInfo IsSapSubsystem="False" WebAutomationFramework="Default" />
       </TargetApp.SapInfo>
-      <imageRef attrName="InformativeScreenshot" originalValue="80d0d08dcda7ba5713fd9afebe6dce6d.jpg" xmlns="">00raC7RWGY0WjfgpP79J8Kw</imageRef>
+      <imageRef attrName="InformativeScreenshot" originalValue="dc73cb7e9f0da59a2ccef525916705c5.jpg" xmlns="">0AXZRnVWscUGeLGjWMFYCkA</imageRef>
     </TargetApp>
     <NInteractionMode x:Key="InteractionMode">DebuggerApi</NInteractionMode>
   </ObjectRepositoryScreenData.Data>

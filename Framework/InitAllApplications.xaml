@@ -107,11 +107,7 @@
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="767.6,2032" sap2010:WorkflowViewState.IdRef="Sequence_9">
-    <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="strUsername" />
-      <Variable x:TypeArguments="ss:SecureString" Name="secPassword" />
-    </Sequence.Variables>
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="767.6,2154.4" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -119,19 +115,24 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="686.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_Config(&quot;SauceDemoCredential&quot;).ToString()]" CacheStrategy="None" DisplayName="Get Credential" FolderPath="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString()]" sap:VirtualizedContainerService.HintSize="686.4,175.2" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[secPassword]" Username="[strUsername]" />
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="Edge Swag Labs" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="686.4,1628" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Always]" OutUiElement="[out_SauceDemoBrowser]" ScopeGuid="7f339bb5-91d1-484f-91e0-b7393cce5a15" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="Edge Swag Labs" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="686.4,1925.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Always]" OutUiElement="[out_SauceDemoBrowser]" ScopeGuid="7f339bb5-91d1-484f-91e0-b7393cce5a15" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="684.8,1486.4" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="684.8,1784" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="strUsername" />
+              <Variable x:TypeArguments="ss:SecureString" Name="secPassword" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
+            <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_Config(&quot;SauceDemoCredential&quot;).ToString()]" CacheStrategy="None" DisplayName="Get Credential" FolderPath="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString()]" sap:VirtualizedContainerService.HintSize="651.2,175.2" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[secPassword]" Username="[strUsername]" />
+            <uix:NGoToUrl sap2010:Annotation.AnnotationText="The card's target is linked to the Object Repository screen, which carries no URL, so navigate explicitly to the configured SauceDemo URL." DisplayName="Go To URL (SauceDemo)" sap:VirtualizedContainerService.HintSize="651.2,122.4" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" ScopeIdentifier="7f339bb5-91d1-484f-91e0-b7393cce5a15" Url="[in_Config(&quot;SauceDemoURL&quot;).ToString]" Version="V5" />
             <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT user-name'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="651.2,245.6" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="SameAsCard" ScopeIdentifier="7f339bb5-91d1-484f-91e0-b7393cce5a15" Text="[strUsername]" Version="V5">
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="saucedemo.com" ContentHash="LPrGoQ-DOkOIXSlU3v9ZGA" DesignTimeRectangle="627, 301, 365, 48" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='user-name' tag='INPUT' /&gt;" Guid="96f20d55-e1b0-4989-8c3e-edcd3482bc50" InformativeScreenshot="e5a0144a85afa56e8214940ed7ddb79d.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/d3r8WaWc7UqNNgNoXuxjTw" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
@@ -214,7 +215,7 @@
         </ActivityFunc>
       </uix:NApplicationCard.OCREngine>
       <uix:NApplicationCard.TargetApp>
-        <uix:TargetApp Area="1911, -9, 1618, 982" BrowserType="Edge" ContentHash="TYDaC3uE50CCsk29p0tjLw" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAF3SURBVDhPfVNLK0VRGPUoMWMgGZhISorERPes8gvkkTlDwtiEmSlnjaQYycxAmPgJiAzkdZdESBHFxCOPPu1923d3smp1Hvtb66z97e+UlDhArIa4CvET4k/EL4jDvjYTEAchvmWIjTcQW2JNAYnmyyAuZwg915J8WhHrCoDYAPEsEHxAvIR4DlEQpyA2QmwKWJtcsNQbDDmRN9iF2AyxDmKHe76HeBdwD2K/j78URZ4N0vX+05t9K7Bop8HLF4g9Js5prhTiQobQc8cMRqIvnEDMWdchdkJch3jsPhLW2dFOm8FG5PoO8QHiE8QV14caSwXxMaizPnSZgUWOoxm/IY4FvRiP1jeRT6tswYYkFhtv/fAkSiv/BMXrE955AOI2xIOAhzY8ELshtkPsc8foxXbf5tOZSZX7Fzxtz4sQXyE+u6ttyRtsIZ9WFgxiQKyHeJSxLc/JWFMEmzB3GrHQeA2xNdYUAeKMa+JVQBPaPIwm+bTc1/4C4RnjWlmxHYMAAAAASUVORK5CYII=" InformativeScreenshot="80d0d08dcda7ba5713fd9afebe6dce6d.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/LQXtcWkeD06XZnDHqOkFiw" Selector="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" Url="[in_Config(&quot;SauceDemoURL&quot;).ToString]" Version="V3">
+        <uix:TargetApp Area="1911, -9, 1618, 982" BrowserType="Edge" ContentHash="a-WzGkNSqEekjbMMRBgfXg" InformativeScreenshot="dc73cb7e9f0da59a2ccef525916705c5.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/LQXtcWkeD06XZnDHqOkFiw" Selector="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" Url="https://www.saucedemo.com/" Version="V3">
           <uix:TargetApp.SapInfo>
             <uix:SAPElementInfo IsSapSubsystem="False" WebAutomationFramework="Default" />
           </uix:TargetApp.SapInfo>
