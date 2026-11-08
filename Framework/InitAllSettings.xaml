@@ -1,8 +1,8 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="InitAllSettings" this:InitAllSettings.in_ConfigFile="Data\Config.json" this:InitAllSettings.in_ConfigSections="[{&quot;Settings&quot;,&quot;Constants&quot;}]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="InitAllSettings" this:InitAllSettings.in_ConfigFile="Data\Config.xlsx" this:InitAllSettings.in_ConfigSections="[{&quot;Settings&quot;,&quot;Constants&quot;}]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property sap2010:Annotation.AnnotationText="Path to the JSON configuration file that defines settings and constants." Name="in_ConfigFile" Type="InArgument(x:String)" />
-    <x:Property sap2010:Annotation.AnnotationText="Names of the sections of the configuration file that hold settings and constants." Name="in_ConfigSections" Type="InArgument(s:String[])" />
-    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings and constants)." Name="out_Config" Type="OutArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property sap2010:Annotation.AnnotationText="Path to the Excel configuration file (Settings, Constants and Assets sheets)." Name="in_ConfigFile" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Names of the key/value sheets of the configuration file (columns Name and Value). The Assets sheet is always read separately." Name="in_ConfigSections" Type="InArgument(s:String[])" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="out_Config" Type="OutArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -15,7 +15,6 @@
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>Microsoft.VisualBasic</x:String>
       <x:String>Microsoft.VisualBasic.Activities</x:String>
-      <x:String>Newtonsoft.Json</x:String>
       <x:String>System</x:String>
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -38,6 +37,8 @@
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -46,7 +47,6 @@
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
-      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
       <AssemblyReference>PresentationCore</AssemblyReference>
       <AssemblyReference>PresentationFramework</AssemblyReference>
       <AssemblyReference>System</AssemblyReference>
@@ -75,6 +75,9 @@
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>System.Xml</AssemblyReference>
       <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
@@ -82,10 +85,10 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Initialize, populate and output a configuration Dictionary to be used throughout the project.&#xA;Settings and constants are read from the local JSON configuration file, one section at a time (by default the Settings and Constants sections).&#xA;Orchestrator artifacts such as queues and assets are not defined in the configuration file: they are declared as solution resources and referenced through bindings." DisplayName="Initialize All Settings" sap:VirtualizedContainerService.HintSize="1397.2,1800" sap2010:WorkflowViewState.IdRef="Sequence_18">
+  <Sequence sap2010:Annotation.AnnotationText="Initialize, populate and output a configuration Dictionary to be used throughout the project.&#xA;Settings and constants are read from the Excel configuration file, one sheet at a time (by default the Settings and Constants sheets), using the Name and Value columns.&#xA;Assets listed in the Assets sheet are then retrieved from Orchestrator and overwrite any local value with the same Name.&#xA;Credential assets are NOT loaded here: keep only their names in Settings and use Get Credential where they are needed." DisplayName="Initialize All Settings" sap:VirtualizedContainerService.HintSize="1397.2,1800" sap2010:WorkflowViewState.IdRef="Sequence_18">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Raw text content of the JSON configuration file." Name="ConfigJson" />
-      <Variable x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:Object))" sap2010:Annotation.AnnotationText="Configuration file deserialized into sections of key/value pairs." Name="ConfigSections" />
+      <Variable x:TypeArguments="sd:DataTable" sap2010:Annotation.AnnotationText="Content of the configuration sheet currently being read." Name="dt_ConfigSheet" />
+      <Variable x:TypeArguments="sd:DataTable" sap2010:Annotation.AnnotationText="Content of the Assets sheet." Name="dt_AssetsSheet" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -102,61 +105,98 @@
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[New Dictionary(of String, Object)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ReadTextFile sap2010:Annotation.AnnotationText="Read the whole JSON configuration file. The path is relative to the project folder." DisplayName="Read Text File (configuration file)" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" FileName="[in_ConfigFile]" Content="[ConfigJson]" />
-    <Assign sap2010:Annotation.AnnotationText="Deserialize the configuration file: each top-level JSON object is a section (e.g. Settings, Constants) holding key/value pairs." DisplayName="Assign ConfigSections (deserialize configuration file)" sap2010:WorkflowViewState.IdRef="Assign_2">
-      <Assign.To>
-        <OutArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:Object))">[ConfigSections]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:Object))">[JsonConvert.DeserializeObject(Of Dictionary(Of String, Dictionary(Of String, Object)))(ConfigJson)]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For each configuration section" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[in_ConfigSections]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For each configuration sheet" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[in_ConfigSections]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="Section" />
           </ActivityAction.Argument>
-          <Sequence sap2010:Annotation.AnnotationText="Read settings and constants from the configuration file and add them to the Config dictionary." DisplayName="Get local settings and constants" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence sap2010:Annotation.AnnotationText="Read settings and constants from the configuration sheet and add them to the Config dictionary." DisplayName="Get local settings and constants" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If sap2010:Annotation.AnnotationText="Fail fast if a required section is missing from the configuration file." Condition="[ConfigSections.ContainsKey(Section)]" DisplayName="If configuration section exists" sap2010:WorkflowViewState.IdRef="If_1">
-              <If.Then>
-                <Sequence DisplayName="Then" sap2010:WorkflowViewState.IdRef="Sequence_13">
-                  <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:Object)" CurrentIndex="{x:Null}" DisplayName="For each configuration entry" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[ConfigSections(Section)]">
-                    <ui:ForEach.Body>
-                      <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, x:Object)">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, x:Object)" Name="ConfigEntry" />
-                        </ActivityAction.Argument>
-                        <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_14">
+            <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dt_ConfigSheet]" DisplayName="Read Range (configuration sheet)" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[Section]" WorkbookPath="[in_ConfigFile]" />
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_ConfigSheet]" DisplayName="For each configuration row" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="ConfigRow" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                    <If Condition="[Not String.IsNullOrWhiteSpace(ConfigRow(&quot;Name&quot;).ToString)]" DisplayName="If configuration row has a Name" sap2010:WorkflowViewState.IdRef="If_2">
+                      <If.Then>
+                        <Sequence DisplayName="Then" sap2010:WorkflowViewState.IdRef="Sequence_19">
                           <Assign DisplayName="Add Config key/value pair" sap2010:WorkflowViewState.IdRef="Assign_15">
                             <Assign.To>
-                              <OutArgument x:TypeArguments="x:Object">[out_Config(ConfigEntry.Key.Trim)]</OutArgument>
+                              <OutArgument x:TypeArguments="x:Object">[out_Config(ConfigRow("Name").ToString.Trim)]</OutArgument>
                             </Assign.To>
                             <Assign.Value>
-                              <InArgument x:TypeArguments="x:Object">[ConfigEntry.Value]</InArgument>
+                              <InArgument x:TypeArguments="x:Object">[ConfigRow("Value")]</InArgument>
                             </Assign.Value>
                           </Assign>
                         </Sequence>
-                      </ActivityAction>
-                    </ui:ForEach.Body>
-                  </ui:ForEach>
-                </Sequence>
-              </If.Then>
-              <If.Else>
-                <Sequence DisplayName="Else" sap2010:WorkflowViewState.IdRef="Sequence_12">
-                  <Throw DisplayName="Throw ConfigSectionNotFound Exception" Exception="[New Exception(&quot;Section '&quot; + Section + &quot;' was not found in the configuration file &quot; + in_ConfigFile)]" sap2010:WorkflowViewState.IdRef="Throw_1" />
-                </Sequence>
-              </If.Else>
-            </If>
+                      </If.Then>
+                    </If>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
           </Sequence>
         </ActivityAction>
       </ui:ForEach.Body>
     </ui:ForEach>
+    <Sequence sap2010:Annotation.AnnotationText="Retrieve the Orchestrator assets listed in the Assets sheet (columns Name, Asset, OrchestratorAssetFolder). Assets overwrite local settings with the same Name." DisplayName="Get Orchestrator assets" sap2010:WorkflowViewState.IdRef="Sequence_20">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dt_AssetsSheet]" DisplayName="Read Range (Assets sheet)" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Assets" WorkbookPath="[in_ConfigFile]" />
+      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_AssetsSheet]" DisplayName="For each asset row" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+        <ui:ForEachRow.Body>
+          <ActivityAction x:TypeArguments="sd:DataRow">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="sd:DataRow" Name="AssetRow" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_21">
+              <If Condition="[Not String.IsNullOrWhiteSpace(AssetRow(&quot;Name&quot;).ToString)]" DisplayName="If asset row has a Name" sap2010:WorkflowViewState.IdRef="If_3">
+                <If.Then>
+                  <Sequence DisplayName="Then" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                    <TryCatch DisplayName="Try getting asset" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                      <TryCatch.Try>
+                        <Sequence DisplayName="Try" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                          <ui:GetRobotAsset DisplayName="Get Asset" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1" AssetName="[AssetRow(&quot;Asset&quot;).ToString.Trim]" CacheStrategy="None" FolderPath="[AssetRow(&quot;OrchestratorAssetFolder&quot;).ToString.Trim]" TimeoutMS="{x:Null}">
+                            <ui:GetRobotAsset.Value>
+                              <OutArgument x:TypeArguments="x:Object">[out_Config(AssetRow("Name").ToString.Trim)]</OutArgument>
+                            </ui:GetRobotAsset.Value>
+                          </ui:GetRobotAsset>
+                        </Sequence>
+                      </TryCatch.Try>
+                      <TryCatch.Catches>
+                        <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                          <ActivityAction x:TypeArguments="s:Exception">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                            </ActivityAction.Argument>
+                            <Sequence DisplayName="Catch" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                              <ui:LogMessage DisplayName="Log Message (asset not loaded)" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Warn" Message="[&quot;Orchestrator asset '&quot; + AssetRow(&quot;Asset&quot;).ToString + &quot;' could not be loaded: &quot; + exception.Message]" />
+                            </Sequence>
+                          </ActivityAction>
+                        </Catch>
+                      </TryCatch.Catches>
+                    </TryCatch>
+                  </Sequence>
+                </If.Then>
+              </If>
+            </Sequence>
+          </ActivityAction>
+        </ui:ForEachRow.Body>
+      </ui:ForEachRow>
+    </Sequence>
+    <ui:LogMessage DisplayName="Log Message (configuration loaded)" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Configuration loaded: &quot; + out_Config.Count.ToString + &quot; keys.&quot;]" />
   </Sequence>
 </Activity>

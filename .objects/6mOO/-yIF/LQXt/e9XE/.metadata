@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Login Error Message",
+  "Description": "Red error banner shown above the Login button on the SauceDemo login page when login fails",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "e9XEEMNkqku_XLsfiBg0Hg",
+  "Reference": "Y6t2V4z8mESCz6OvpfNcaw/e9XEEMNkqku_XLsfiBg0Hg",
+  "ParentRef": "Y6t2V4z8mESCz6OvpfNcaw/LQXtcWkeD06XZnDHqOkFiw",
+  "Created": "2026-11-08T12:11:57.4273756Z",
+  "Updated": "2026-11-08T12:11:57.4273756Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.6.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

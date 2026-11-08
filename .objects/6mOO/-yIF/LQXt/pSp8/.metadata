@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Products",
+  "Description": "Products page title in the secondary header; visible only after a successful login",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "pSp8UqBTbUir48AE4TSlAQ",
+  "Reference": "Y6t2V4z8mESCz6OvpfNcaw/pSp8UqBTbUir48AE4TSlAQ",
+  "ParentRef": "Y6t2V4z8mESCz6OvpfNcaw/LQXtcWkeD06XZnDHqOkFiw",
+  "Created": "2026-11-08T11:59:05.7205238Z",
+  "Updated": "2026-11-08T12:10:36.4729974Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.6.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

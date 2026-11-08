@@ -62,5 +62,6 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log message (Kill processes)" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Killing processes...&quot;]" />
+    <ui:KillProcess AppliesTo="OnlyCurrentSession" ContinueOnError="True" DisplayName="Kill Process 'msedge'" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="msedge" />
   </Sequence>
 </Activity>
