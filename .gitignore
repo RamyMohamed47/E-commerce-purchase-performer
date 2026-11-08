@@ -11,3 +11,6 @@
 # Studio temp files and local runtime storage
 ~*.xaml
 .storage
+
+# Runtime output (processing reports)
+Data/Output/*.xlsx
