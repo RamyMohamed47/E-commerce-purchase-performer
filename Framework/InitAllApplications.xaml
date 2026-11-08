@@ -115,95 +115,14 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="686.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="Edge Swag Labs" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="686.4,1925.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Always]" OutUiElement="[out_SauceDemoBrowser]" ScopeGuid="7f339bb5-91d1-484f-91e0-b7393cce5a15" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="Open SauceDemo in Edge" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="686.4,1925.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Always]" OutUiElement="[out_SauceDemoBrowser]" ScopeGuid="7f339bb5-91d1-484f-91e0-b7393cce5a15" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="684.8,1784" sap2010:WorkflowViewState.IdRef="Sequence_10">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="x:String" Name="strUsername" />
-              <Variable x:TypeArguments="ss:SecureString" Name="secPassword" />
-            </Sequence.Variables>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_Config(&quot;SauceDemoCredential&quot;).ToString()]" CacheStrategy="None" DisplayName="Get Credential" FolderPath="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString()]" sap:VirtualizedContainerService.HintSize="651.2,175.2" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[secPassword]" Username="[strUsername]" />
-            <uix:NGoToUrl sap2010:Annotation.AnnotationText="The card's target is linked to the Object Repository screen, which carries no URL, so navigate explicitly to the configured SauceDemo URL." DisplayName="Go To URL (SauceDemo)" sap:VirtualizedContainerService.HintSize="651.2,122.4" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" ScopeIdentifier="7f339bb5-91d1-484f-91e0-b7393cce5a15" Url="[in_Config(&quot;SauceDemoURL&quot;).ToString]" Version="V5" />
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT user-name'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="651.2,245.6" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="SameAsCard" ScopeIdentifier="7f339bb5-91d1-484f-91e0-b7393cce5a15" Text="[strUsername]" Version="V5">
-              <uix:NTypeInto.Target>
-                <uix:TargetAnchorable BrowserURL="saucedemo.com" ContentHash="LPrGoQ-DOkOIXSlU3v9ZGA" DesignTimeRectangle="627, 301, 365, 48" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='user-name' tag='INPUT' /&gt;" Guid="96f20d55-e1b0-4989-8c3e-edcd3482bc50" InformativeScreenshot="e5a0144a85afa56e8214940ed7ddb79d.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/d3r8WaWc7UqNNgNoXuxjTw" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-              </uix:NTypeInto.Target>
-              <uix:NTypeInto.VerifyOptions>
-                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
-                  <uix:VerifyExecutionTypeIntoOptions.Retry>
-                    <InArgument x:TypeArguments="x:Boolean" />
-                  </uix:VerifyExecutionTypeIntoOptions.Retry>
-                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
-                    <InArgument x:TypeArguments="x:Double" />
-                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
-                </uix:VerifyExecutionTypeIntoOptions>
-              </uix:NTypeInto.VerifyOptions>
-            </uix:NTypeInto>
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT password'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="651.2,245.6" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="SameAsCard" ScopeIdentifier="7f339bb5-91d1-484f-91e0-b7393cce5a15" SecureText="[secPassword]" Version="V5">
-              <uix:NTypeInto.Target>
-                <uix:TargetAnchorable BrowserURL="saucedemo.com" ContentHash="MGNlJSQK70-MDapJBRbz5A" DesignTimeRectangle="627, 368, 365, 48" ElementType="InputBoxPassword" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='password' tag='INPUT' /&gt;" Guid="b961e76c-8c1b-44d7-972c-148a574e53ad" InformativeScreenshot="be1bd318e8dd6fdf002e523ff9262741.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/iOUYFX2lG0SMcyykJWWQww" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-              </uix:NTypeInto.Target>
-              <uix:NTypeInto.VerifyOptions>
-                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
-                  <uix:VerifyExecutionTypeIntoOptions.Retry>
-                    <InArgument x:TypeArguments="x:Boolean" />
-                  </uix:VerifyExecutionTypeIntoOptions.Retry>
-                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
-                    <InArgument x:TypeArguments="x:Double" />
-                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
-                </uix:VerifyExecutionTypeIntoOptions>
-              </uix:NTypeInto.VerifyOptions>
-            </uix:NTypeInto>
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Login'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="651.2,193.6" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7f339bb5-91d1-484f-91e0-b7393cce5a15" Version="V5">
-              <uix:NClick.Target>
-                <uix:TargetAnchorable BrowserURL="saucedemo.com" ContentHash="u3AvZIeLskWrdkicLxDXBA" DesignTimeRectangle="627, 485, 365, 61" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='login-button' tag='INPUT' /&gt;" Guid="c8e4f653-c60a-465d-814b-bdcb57033288" InformativeScreenshot="225907b65a9659ad732801710c487e98.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/X0uXGR_5WkGOLLa9ZSL01A" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-              </uix:NClick.Target>
-            </uix:NClick>
-            <uix:NCheckState DisplayName="Check App State 'Products'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="651.2,741.6" sap2010:WorkflowViewState.IdRef="NCheckState_1" IsLoose="True" Timeout="10" Version="V5">
-              <uix:NCheckState.IfExists>
-                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="649.6,89.6" sap2010:WorkflowViewState.IdRef="Sequence_11">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </Sequence>
-              </uix:NCheckState.IfExists>
-              <uix:NCheckState.IfNotExists>
-                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="649.6,316" sap2010:WorkflowViewState.IdRef="Sequence_12">
-                  <Sequence.Variables>
-                    <Variable x:TypeArguments="x:String" Name="strLoginError" />
-                  </Sequence.Variables>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <uix:NGetText sap2010:Annotation.AnnotationText="Read the red error banner on the login page (e.g. wrong password, locked out user). Continues on error so the Throw below still runs when no banner is shown." ContinueOnError="True" DisplayName="Get Text 'Login Error Message'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="616,142.4" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="7f339bb5-91d1-484f-91e0-b7393cce5a15" TextString="[strLoginError]" Timeout="5" Version="V5">
-                    <uix:NGetText.Target>
-                      <uix:TargetAnchorable ContentHash="NfO3yYHzokqLiVuLrLDGDA" DesignTimeRectangle="639, 425, 340, 50" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aria-label='Login' tag='FORM' /&gt;&lt;webctrl aria-role='alert' tag='H3' /&gt;" Guid="9273bc20-2113-4ebc-b09f-a304b66765e1" InformativeScreenshot="bf039adcbd44283549cab3a4b2b9930e.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/e9XEEMNkqku_XLsfiBg0Hg" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
-                    </uix:NGetText.Target>
-                  </uix:NGetText>
-                  <Throw Exception="[New Exception(&quot;SauceDemo login failed: &quot; &amp; If(String.IsNullOrWhiteSpace(strLoginError), &quot;the Products page did not load and no error message was shown.&quot;, strLoginError.Trim))]" sap:VirtualizedContainerService.HintSize="616,113.6" sap2010:WorkflowViewState.IdRef="Throw_1" />
-                </Sequence>
-              </uix:NCheckState.IfNotExists>
-              <uix:NCheckState.Target>
-                <uix:TargetAnchorable BrowserURL="saucedemo.com/inventory.html" ContentHash="i3wPYpPN20atYvpOdcyxeQ" DesignTimeRectangle="39, 185, 96, 60" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname='Products' data-test='title' tag='SPAN' /&gt;" Guid="93281675-f729-486c-87c3-e4591e95e4cb" InformativeScreenshot="2d777a31e3c8ff68b23eb4db64f92f4b.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/pSp8UqBTbUir48AE4TSlAQ" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive">
-                  <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="0" />
-                  </uix:TargetAnchorable.Anchors>
-                </uix:TargetAnchorable>
-              </uix:NCheckState.Target>
-            </uix:NCheckState>
+          <Sequence sap2010:Annotation.AnnotationText="The card only OPENS Edge on SauceDemo (Open = Always, Close = Never) and outputs the browser element. The login runs after the card through the shared LoginSauceDemo workflow." DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <ui:LogMessage DisplayName="Log browser opened" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;SauceDemo browser opened.&quot;]" />
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
@@ -222,5 +141,11 @@
         </uix:TargetApp>
       </uix:NApplicationCard.TargetApp>
     </uix:NApplicationCard>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" sap2010:Annotation.AnnotationText="Shared login (also used by EnsureSauceDemoSession after a session timeout). Runs after the card so cards are never nested; out_SauceDemoBrowser is already set by the card." DisplayName="Invoke LoginSauceDemo workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\LoginSauceDemo.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="ui:UiElement" x:Key="in_SauceDemoBrowser">[out_SauceDemoBrowser]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
   </Sequence>
 </Activity>
