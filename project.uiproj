@@ -1,0 +1,6 @@
+{
+  "Name": "E-Commerce_Purchase_Performer",
+  "ProjectType": "Process",
+  "Description": "The performer to consume queue items from the e commerce app dispatcher",
+  "MainFile": "Main.xaml"
+}
