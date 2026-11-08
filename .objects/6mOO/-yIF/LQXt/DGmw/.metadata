@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Type postal code",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "DGmw-nZl40KOUqov1zvjDQ",
+  "Reference": "Y6t2V4z8mESCz6OvpfNcaw/DGmw-nZl40KOUqov1zvjDQ",
+  "ParentRef": "Y6t2V4z8mESCz6OvpfNcaw/LQXtcWkeD06XZnDHqOkFiw",
+  "Created": "2026-11-08T22:20:24.8435281Z",
+  "Updated": "2026-11-08T22:20:24.8435281Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.6.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

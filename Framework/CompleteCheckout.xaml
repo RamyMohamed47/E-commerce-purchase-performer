@@ -1,0 +1,344 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="CompleteCheckout" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_TransactionResult" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_SauceDemoBrowser" Type="InArgument(ui:UiElement)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>CompleteCheckout_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.Numerics</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Linq.AsyncEnumerable</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Buys the validated product in SauceDemo for one request.&#xA;Reads ProductName, FirstName, LastName, PostalCode from in_TransactionResult; writes ItemTotalUSD, TaxUSD, TotalUSD, CheckoutCompleted and Confirmation back into it.&#xA;Any UI failure before Finish is a system exception (retried with a fresh browser and an emptied cart)." DisplayName="CompleteCheckout" sap:VirtualizedContainerService.HintSize="799.6,4944" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Number shown on the cart badge (e.g. '1')." Name="strCartCount" />
+      <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Product name listed on the cart page." Name="strCartItemName" />
+      <Variable x:TypeArguments="x:String" Name="strConfirmation" />
+      <Variable x:TypeArguments="x:String" Name="strTotal" />
+      <Variable x:TypeArguments="x:String" Name="strTax" />
+      <Variable x:TypeArguments="x:String" Name="strItemTotal" />
+      <Variable x:TypeArguments="x:String" Default="[in_TransactionResult(&quot;ProductName&quot;).ToString]" Name="strProductName" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard sap2010:Annotation.AnnotationText="Attaches to the browser opened and logged in by InitAllApplications. Open/Close = Never: the session is reused across transactions." AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="Attach to SauceDemo browser" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="486.4,4920.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_SauceDemoBrowser]" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="4aa80769-0dc0-4a7b-afb7-a7b31fa7d527" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="484.8,4799.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="Reset at the START of every transaction: even if a previous run crashed mid-checkout, this request begins with an empty cart (it can never buy two items)." ClickType="Single" DisplayName="Open menu" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="451.2,193.6" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="4aa80769-0dc0-4a7b-afb7-a7b31fa7d527" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="saucedemo.com/inventory.html" ContentHash="OzpAL7VZAUSxFI6AXWZWYA" DesignTimeRectangle="39, 134, 25, 25" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='react-burger-menu-btn' tag='BUTTON' /&gt;" Guid="30e4ee8e-8853-4564-9c2c-88cdc7b6ead4" InformativeScreenshot="e9d7df9a3505fce4e1ae6021cb288ee7.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/6LuOVTOkNkK7kY2svdJiVQ" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="Menu slides in, hence the 0.5 s Delay before." ClickType="Single" DelayBefore="0.5" DisplayName="Reset App State (empty cart)" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="451.2,193.6" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="4aa80769-0dc0-4a7b-afb7-a7b31fa7d527" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="saucedemo.com/inventory.html" ContentHash="QHzKvlCJ406J3y19vc5MWA" DesignTimeRectangle="44, 398, 315, 51" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='reset_sidebar_link' tag='A' /&gt;" Guid="827a1b80-1a8e-4153-b771-a33cfe83f140" InformativeScreenshot="1fcb3ab60d0079c5300a2f0af58f14e8.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/G2uXgn8eA0yIThrO25ccSw" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Close menu" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="451.2,193.6" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="4aa80769-0dc0-4a7b-afb7-a7b31fa7d527" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="saucedemo.com/inventory.html" ContentHash="Fc0zj6GQUECRldYPH29Yuw" DesignTimeRectangle="344, 129, 25, 25" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='react-burger-cross-btn' tag='BUTTON' /&gt;" Guid="bc00741d-dcf8-4a45-b341-b90fd7c94267" InformativeScreenshot="2cdb5a5eec1cea7946c9990d4d0e02bc.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/SZZBC4B0A0-ZnZLAWRRMrQ" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NGoToUrl sap2010:Annotation.AnnotationText="Fresh load after the reset, so no button still shows a stale Remove state." DisplayName="Go to inventory page" sap:VirtualizedContainerService.HintSize="451.2,122.4" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" ScopeIdentifier="4aa80769-0dc0-4a7b-afb7-a7b31fa7d527" Url="[in_Config(&quot;SauceDemoURL&quot;).ToString &amp; &quot;inventory.html&quot;]" Version="V5" />
+            <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="Dynamic selector: aaname = strProductName (the exact name stored by GetProductPrice) + data-test inventory-item-name. Opening the product page avoids picking one of six identical Add to cart buttons in the list." ClickType="Single" DisplayName="Open requested product page" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="451.2,193.6" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="4aa80769-0dc0-4a7b-afb7-a7b31fa7d527" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="saucedemo.com/inventory.html" ContentHash="yO18X1N0KE2SA3a1ZoB_6w" DesignTimeRectangle="350, 327, 375, 25" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl aaname='{0}' data-test='inventory-item-name' tag='DIV' /&gt;&quot;, strProductName)]" Guid="10a3537d-5895-4313-a509-abe6cc8c3eed" InformativeScreenshot="3ca594a6ba5d29c6f1e96dca98e94a62.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/A2aFF1iCtkuzBY73wzQi5Q" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="The detail page has a single Add to cart button, so a static selector works for every product." ClickType="Single" DisplayName="Add product to cart" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="451.2,193.6" sap2010:WorkflowViewState.IdRef="NClick_5" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="4aa80769-0dc0-4a7b-afb7-a7b31fa7d527" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="saucedemo.com/inventory-item.html" ContentHash="Kox5cqMjqU2Y2fwj1s6OxQ" DesignTimeRectangle="672, 558, 200, 42" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='add-to-cart' tag='BUTTON' /&gt;" Guid="2a4fabbb-8c16-4256-827b-e5d32f9d0e18" InformativeScreenshot="f5ce97b1b6ed3e91d2ab3315bb2d27de.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/jG4YmQ6VXUeUH34PhMx_nQ" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Open cart" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="451.2,193.6" sap2010:WorkflowViewState.IdRef="NClick_6" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="4aa80769-0dc0-4a7b-afb7-a7b31fa7d527" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="saucedemo.com/inventory-item.html" ContentHash="-0IQoYM73UeMAYdjkcIVKg" DesignTimeRectangle="1510, 122, 50, 50" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl data-test='shopping-cart-link' tag='A' /&gt;" Guid="0343facd-cd79-45bb-86a0-1036636adaca" InformativeScreenshot="fc45066a26ea3ddafde17a902609fa54.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/Xk421wCFpUOvm8dPQPrBCQ" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NGetText sap2010:Annotation.AnnotationText="Badge = number of items in the cart. Must be exactly 1, so a leftover second item is caught." DisplayName="Get cart item count" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NGetText_5" ScopeIdentifier="4aa80769-0dc0-4a7b-afb7-a7b31fa7d527" TextString="[strCartCount]" Version="V5">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable ContentHash="wYhQ2nxxiU-9w4iC-N03pQ" DesignTimeRectangle="1554, 122, 25, 25" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl data-test='shopping-cart-badge' parentid='shopping_cart_container' tag='SPAN' /&gt;" Guid="06a7f18b-9c47-42e1-ab4f-f8b7f5ac31d1" InformativeScreenshot="17b8e841e4cfd4da156551301aac76ed.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/6KQYVOH1DUOvlx6SrFsjpQ" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <uix:NGetText DisplayName="Get cart item name" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NGetText_6" ScopeIdentifier="4aa80769-0dc0-4a7b-afb7-a7b31fa7d527" TextString="[strCartItemName]" Version="V5">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable ContentHash="PgQbGDp_hUmt1N93JbQ12g" DesignTimeRectangle="126, 357, 1433, 25" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl data-test='inventory-item-name' parentid='item_*_title_link' tag='DIV' /&gt;" Guid="79d13c11-9088-4e0f-b9e9-deea4a650880" InformativeScreenshot="9d03dcfafa7b5f66da00ba94f0b5a940.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/FxsGOn-Xx06NbRMqFRF4Ww" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <If sap2010:Annotation.AnnotationText="Requirement: verify the selected item before paying. Exactly one item, with the requested name." Condition="[strCartCount.Trim &lt;&gt; &quot;1&quot; OrElse Not strCartItemName.Trim.Equals(strProductName, StringComparison.OrdinalIgnoreCase)]" DisplayName="If cart does not contain exactly the requested product" sap:VirtualizedContainerService.HintSize="451.2,368.8" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,173.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw sap2010:Annotation.AnnotationText="Wrong cart = technical glitch, not the employee's fault: plain Exception, the item is retried and the reset empties the cart first." DisplayName="Throw system exception (cart verification failed)" Exception="[New Exception(&quot;Cart verification failed: expected 1 x '&quot; &amp; strProductName &amp; &quot;', cart shows &quot; &amp; strCartCount.Trim &amp; &quot; item(s), first item '&quot; &amp; strCartItemName.Trim &amp; &quot;'.&quot;)]" sap:VirtualizedContainerService.HintSize="416,113.6" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                </Sequence>
+              </If.Then>
+            </If>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Start checkout" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="451.2,193.6" sap2010:WorkflowViewState.IdRef="NClick_7" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="4aa80769-0dc0-4a7b-afb7-a7b31fa7d527" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="saucedemo.com/cart.html" ContentHash="FsFM3CzaU0-VvZD1fTj_-Q" DesignTimeRectangle="1310, 623, 275, 42" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='checkout' tag='BUTTON' /&gt;" Guid="473c7977-4ac8-4200-8ee2-5488391fa814" InformativeScreenshot="a0bcfb691873bf6c42c22a72b5e82da2.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/4GWE9DyYOUic-C8GeW7BIw" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type first name" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="451.2,245.6" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="DebuggerApi" ScopeIdentifier="4aa80769-0dc0-4a7b-afb7-a7b31fa7d527" Text="[in_TransactionResult(&quot;FirstName&quot;).ToString]" Version="V5">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="saucedemo.com/checkout-step-one.html" ContentHash="0HO2W7Llg0u0hAkfVMvW-Q" DesignTimeRectangle="562, 427, 475, 48" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='first-name' tag='INPUT' /&gt;" Guid="b8511a1c-3677-4b9f-b080-62bdb3a98da5" InformativeScreenshot="563aa9cc1e3de6682494f83dbd34c336.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/XkAR8MHLkUC4W6OK4mJaWw" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type last name" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="451.2,245.6" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="DebuggerApi" ScopeIdentifier="4aa80769-0dc0-4a7b-afb7-a7b31fa7d527" Text="[in_TransactionResult(&quot;LastName&quot;).ToString]" Version="V5">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="saucedemo.com/checkout-step-one.html" ContentHash="kZC2ERl0HEu_2Wy5IAsUgA" DesignTimeRectangle="562, 494, 475, 48" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='last-name' tag='INPUT' /&gt;" Guid="f28adeb2-1876-4137-a73f-055236815a6a" InformativeScreenshot="1fb2ecae7f6b17421bc1b45c9fa0344a.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/8P6H2xn7DEWgxZQrJ9s-cA" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type postal code" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="451.2,245.6" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InteractionMode="DebuggerApi" ScopeIdentifier="4aa80769-0dc0-4a7b-afb7-a7b31fa7d527" Text="[in_TransactionResult(&quot;PostalCode&quot;).ToString]" Version="V5">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="saucedemo.com/checkout-step-one.html" ContentHash="Y64_HF19d0CTXYBA0iVj3g" DesignTimeRectangle="562, 561, 475, 48" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='postal-code' tag='INPUT' /&gt;" Guid="6bca37f4-0b60-4532-b19f-60923c1858a9" InformativeScreenshot="c85139b9c565f9674610d1357c9f9d74.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/DGmw-nZl40KOUqov1zvjDQ" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="No extra checks on this page: ValidateRequest already guaranteed first name, last name and postal code." ClickType="Single" DisplayName="Continue to overview" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="451.2,193.6" sap2010:WorkflowViewState.IdRef="NClick_8" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="4aa80769-0dc0-4a7b-afb7-a7b31fa7d527" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="saucedemo.com/checkout-step-one.html" ContentHash="AdzBKpKmjkOR7xbFSitz9g" DesignTimeRectangle="1291, 854, 275, 51" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='continue' tag='INPUT' /&gt;" Guid="7cce967d-3d18-46f9-8087-f00ed6ada10c" InformativeScreenshot="00fe0d4fa9d73c2dc374e7bb9583e560.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/JUqfg2JYRkSB6K8joSFaFg" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NGetText sap2010:Annotation.AnnotationText="Overview labels: Item total / Tax / Total. Captured separately for the report; the budget check already used the list price." DisplayName="Get item total" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="451.2,142.4" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="4aa80769-0dc0-4a7b-afb7-a7b31fa7d527" TextString="[strItemTotal]" Version="V5">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="saucedemo.com/checkout-step-two.html" ContentHash="vTa3cEKPvk6Kn6WUlFryFw" DesignTimeRectangle="33, 675, 1533, 25" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl class='summary_subtotal_label' parentid='checkout_summary_container' tag='DIV' /&gt;" Guid="f29c59e8-0565-452a-8a1e-3e802c8ef10f" InformativeScreenshot="200666846434ee112871d89914c773a9.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/vrrMBiZ9bEu1ZOSyZEfbKA" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <uix:NGetText DisplayName="Get tax" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="451.2,142.4" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="4aa80769-0dc0-4a7b-afb7-a7b31fa7d527" TextString="[strTax]" Version="V5">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="saucedemo.com/checkout-step-two.html" ContentHash="U-g35fPUmUmB75B4U0ca-g" DesignTimeRectangle="33, 700, 1533, 25" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl class='summary_tax_label' parentid='checkout_summary_container' tag='DIV' /&gt;" Guid="32e135b4-cb85-4295-a4a1-4bbd544f9d4c" InformativeScreenshot="3a555dd80f7d0b5419200962359b5066.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/ZZ0wVTXigk-TnSeeOim7bQ" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <uix:NGetText DisplayName="Get total" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="451.2,142.4" sap2010:WorkflowViewState.IdRef="NGetText_3" ScopeIdentifier="4aa80769-0dc0-4a7b-afb7-a7b31fa7d527" TextString="[strTotal]" Version="V5">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="saucedemo.com/checkout-step-two.html" ContentHash="Keozt_syZ0iR57DXIRx8oQ" DesignTimeRectangle="33, 725, 1533, 50" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl class='summary_total_label' parentid='checkout_summary_container' tag='DIV' /&gt;" Guid="1a368ef5-d301-4337-8e65-8006d6d25d47" InformativeScreenshot="14a147ce1e9a6b27e466b1d721d4452f.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/CaxSjnWoGU2RPYaoPQF41Q" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <Assign sap2010:Annotation.AnnotationText="'Item total: $29.99' -&gt; split on $ -&gt; 29.99 (Decimal, InvariantCulture)." DisplayName="Store item total (USD)" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Object">[in_TransactionResult("ItemTotalUSD")]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Object">[Decimal.Parse(strItemTotal.Split("$"c).Last.Trim, NumberStyles.Number, CultureInfo.InvariantCulture)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Store tax (USD)" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Object">[in_TransactionResult("TaxUSD")]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Object">[Decimal.Parse(strTax.Split("$"c).Last.Trim, NumberStyles.Number, CultureInfo.InvariantCulture)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Store total (USD)" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Object">[in_TransactionResult("TotalUSD")]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Object">[Decimal.Parse(strTotal.Split("$"c).Last.Trim, NumberStyles.Number, CultureInfo.InvariantCulture)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="Point of no return: after this click the order is placed." ClickType="Single" DisplayName="Finish order" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="451.2,193.6" sap2010:WorkflowViewState.IdRef="NClick_9" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="4aa80769-0dc0-4a7b-afb7-a7b31fa7d527" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="saucedemo.com/checkout-step-two.html" ContentHash="k9MB3L2-fU2MISgKn-VC-A" DesignTimeRectangle="1291, 835, 275, 42" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='finish' tag='BUTTON' /&gt;" Guid="58692455-4f7e-4d53-a49f-e2327aa94ecf" InformativeScreenshot="3cab3c92bd75b79a80eb54aa12cbed87.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/j0w28Z5r2k-SB4bpQeDTEg" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <Assign sap2010:Annotation.AnnotationText="Set IMMEDIATELY after Finish. If anything later fails (confirmation text, report, email), the report step still records Completed and a retry never buys again." DisplayName="Mark checkout completed" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Object">[in_TransactionResult("CheckoutCompleted")]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Object">[True]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <uix:NGetText DisplayName="Get confirmation message" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="451.2,142.4" sap2010:WorkflowViewState.IdRef="NGetText_4" ScopeIdentifier="4aa80769-0dc0-4a7b-afb7-a7b31fa7d527" TextString="[strConfirmation]" Version="V5">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="saucedemo.com/checkout-complete.html" ContentHash="NcE3saloVUyPBKbUI8zwoQ" DesignTimeRectangle="574, 478, 450, 40" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl data-test='complete-header' tag='H2' /&gt;" Guid="35673833-ff91-4124-8ad2-729b9d291883" InformativeScreenshot="1a6485d53cb0e994fad084c89b86a5a0.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/sBfN-e42LkuKpFFaaqrDrg" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <Assign sap2010:Annotation.AnnotationText="SauceDemo shows no order number, so the confirmation text plus a timestamp is the proof of purchase." DisplayName="Store confirmation details" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_5">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Object">[in_TransactionResult("Confirmation")]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Object">[strConfirmation.Trim &amp; " (" &amp; Now.ToString("yyyy-MM-dd HH:mm:ss") &amp; ")"]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="Leave the shop on the product list for the next transaction." ClickType="Single" DisplayName="Back to products" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="451.2,184.8" sap2010:WorkflowViewState.IdRef="NClick_10" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="4aa80769-0dc0-4a7b-afb7-a7b31fa7d527" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="saucedemo.com/checkout-complete.html" ContentHash="_7LsVpCpTECSj-32c9lhpg" DesignTimeRectangle="590, 681, 200, 67" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='back-to-products' tag='BUTTON' /&gt;" Guid="43a7fc2a-408e-4f48-8390-a91fd9134ca3" InformativeScreenshot="c8c8c9568d7e9f7125c10a37e970b149.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/pqxLO2Gxx0qgPGSdl16nzg" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.OCREngine>
+        <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+          <ActivityFunc.Argument>
+            <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+          </ActivityFunc.Argument>
+        </ActivityFunc>
+      </uix:NApplicationCard.OCREngine>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="0, 0, 0, 0" Version="V3" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Finish",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "j0w28Z5r2k-SB4bpQeDTEg",
+  "Reference": "Y6t2V4z8mESCz6OvpfNcaw/j0w28Z5r2k-SB4bpQeDTEg",
+  "ParentRef": "Y6t2V4z8mESCz6OvpfNcaw/LQXtcWkeD06XZnDHqOkFiw",
+  "Created": "2026-11-08T22:26:05.7749687Z",
+  "Updated": "2026-11-08T22:26:05.7749687Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.6.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

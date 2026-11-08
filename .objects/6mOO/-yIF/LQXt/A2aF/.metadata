@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Product Name Link",
+  "Description": "Product title on the inventory list; selector parametrized with strProductName (exact name as listed)",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "A2aFF1iCtkuzBY73wzQi5Q",
+  "Reference": "Y6t2V4z8mESCz6OvpfNcaw/A2aFF1iCtkuzBY73wzQi5Q",
+  "ParentRef": "Y6t2V4z8mESCz6OvpfNcaw/LQXtcWkeD06XZnDHqOkFiw",
+  "Created": "2026-11-08T22:05:42.9419904Z",
+  "Updated": "2026-11-08T22:35:41.2255088Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.6.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

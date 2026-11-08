@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Get Tax",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "ZZ0wVTXigk-TnSeeOim7bQ",
+  "Reference": "Y6t2V4z8mESCz6OvpfNcaw/ZZ0wVTXigk-TnSeeOim7bQ",
+  "ParentRef": "Y6t2V4z8mESCz6OvpfNcaw/LQXtcWkeD06XZnDHqOkFiw",
+  "Created": "2026-11-08T22:24:09.0015322Z",
+  "Updated": "2026-11-08T22:24:09.0015322Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.6.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

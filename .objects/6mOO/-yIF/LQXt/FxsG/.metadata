@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Cart Item Name",
+  "Description": "Product name of the item listed on the cart page",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "FxsGOn-Xx06NbRMqFRF4Ww",
+  "Reference": "Y6t2V4z8mESCz6OvpfNcaw/FxsGOn-Xx06NbRMqFRF4Ww",
+  "ParentRef": "Y6t2V4z8mESCz6OvpfNcaw/LQXtcWkeD06XZnDHqOkFiw",
+  "Created": "2026-11-08T22:45:10.8023966Z",
+  "Updated": "2026-11-08T22:45:10.8023966Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.6.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

@@ -1,0 +1,18 @@
+﻿{
+  "Name": "Order Confirmation Header",
+  "Description": "'Thank you for your order!' heading on the checkout complete page",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "sBfN-e42LkuKpFFaaqrDrg",
+  "Reference": "Y6t2V4z8mESCz6OvpfNcaw/sBfN-e42LkuKpFFaaqrDrg",
+  "ParentRef": "Y6t2V4z8mESCz6OvpfNcaw/LQXtcWkeD06XZnDHqOkFiw",
+  "Created": "2026-11-08T22:27:25.3394435Z",
+  "Updated": "2026-11-08T22:48:14.1710382Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.6.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

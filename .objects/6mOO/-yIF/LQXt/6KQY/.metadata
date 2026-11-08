@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Cart Badge",
+  "Description": "Red item counter on the cart icon in the header; shows how many items are in the cart (absent when empty)",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "6KQYVOH1DUOvlx6SrFsjpQ",
+  "Reference": "Y6t2V4z8mESCz6OvpfNcaw/6KQYVOH1DUOvlx6SrFsjpQ",
+  "ParentRef": "Y6t2V4z8mESCz6OvpfNcaw/LQXtcWkeD06XZnDHqOkFiw",
+  "Created": "2026-11-08T22:45:10.7220622Z",
+  "Updated": "2026-11-08T22:45:10.7220622Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.6.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

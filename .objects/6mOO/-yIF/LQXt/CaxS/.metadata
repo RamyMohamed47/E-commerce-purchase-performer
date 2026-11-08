@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Get Total",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "CaxSjnWoGU2RPYaoPQF41Q",
+  "Reference": "Y6t2V4z8mESCz6OvpfNcaw/CaxSjnWoGU2RPYaoPQF41Q",
+  "ParentRef": "Y6t2V4z8mESCz6OvpfNcaw/LQXtcWkeD06XZnDHqOkFiw",
+  "Created": "2026-11-08T22:24:20.1717096Z",
+  "Updated": "2026-11-08T22:24:20.1717096Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.6.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

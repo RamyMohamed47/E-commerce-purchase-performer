@@ -100,7 +100,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Processes one purchase request (one queue item).&#xA;1. Validate the request data.&#xA;2. Skip it if the report already shows it as Completed (no second checkout).&#xA;3. Otherwise: find product, convert price, check limit, check out, update report.&#xA;&#xA;BusinessRuleException = Rejected (not retried). Any other exception = Failed/system exception (retried by the queue).&#xA;in_TransactionResult is filled step by step so the report can be written for every outcome." DisplayName="Process" sap:VirtualizedContainerService.HintSize="767.6,2800" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Processes one purchase request (one queue item).&#xA;1. Validate the request data.&#xA;2. Skip it if the report already shows it as Completed (no second checkout).&#xA;3. Otherwise: find product, convert price, check limit, check out, update report.&#xA;&#xA;BusinessRuleException = Rejected (not retried). Any other exception = Failed/system exception (retried by the queue).&#xA;in_TransactionResult is filled step by step so the report can be written for every outcome." DisplayName="Process" sap:VirtualizedContainerService.HintSize="799.6,2976" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" sap2010:Annotation.AnnotationText="True when the report already has a Completed row for this Request ID." Name="boolAlreadyCompleted" />
     </Sequence.Variables>
@@ -125,7 +125,7 @@
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <If sap2010:Annotation.AnnotationText="The report is the source of truth for idempotency: unique queue references stop duplicate items, but not a re-dispatch after deletion or a retry after a successful checkout. Already completed = log and finish normally (no exception, no second purchase)." Condition="[boolAlreadyCompleted]" DisplayName="If request already completed" sap:VirtualizedContainerService.HintSize="486.4,2172.8" sap2010:WorkflowViewState.IdRef="If_1">
+    <If sap2010:Annotation.AnnotationText="The report is the source of truth for idempotency: unique queue references stop duplicate items, but not a re-dispatch after deletion or a retry after a successful checkout. Already completed = log and finish normally (no exception, no second purchase)." Condition="[boolAlreadyCompleted]" DisplayName="If request already completed" sap:VirtualizedContainerService.HintSize="486.4,2348.8" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484.8,400" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
@@ -133,7 +133,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log skipping completed request" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Request &quot; &amp; in_TransactionResult(&quot;RequestId&quot;).ToString &amp; &quot; already completed in the report – skipping (no second checkout).&quot;]" />
+          <ui:LogMessage DisplayName="Log skipping completed request" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Request &quot; &amp; in_TransactionResult(&quot;RequestId&quot;).ToString &amp; &quot; already completed in the report – skipping (no second checkout).&quot;]" />
           <Assign sap2010:Annotation.AnnotationText="Tells the report step not to overwrite the existing Completed row for this request." DisplayName="Flag AlreadyCompleted in TransactionResult" sap:VirtualizedContainerService.HintSize="451.2,165.6" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Object">[in_TransactionResult("AlreadyCompleted")]</OutArgument>
@@ -145,7 +145,7 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap2010:Annotation.AnnotationText="New request: find product, convert price, check limit, check out, update report." DisplayName="Else" sap:VirtualizedContainerService.HintSize="484.8,1611.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence sap2010:Annotation.AnnotationText="New request: find product, convert price, check limit, check out, update report." DisplayName="Else" sap:VirtualizedContainerService.HintSize="484.8,1787.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Product name exactly as listed on SauceDemo." Name="strProductName" />
             <Variable x:TypeArguments="x:Decimal" sap2010:Annotation.AnnotationText="Listed product price in USD (used for the budget check)." Name="decPriceUSD" />
@@ -157,6 +157,12 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" sap2010:Annotation.AnnotationText="SauceDemo sessions expire after about 10 minutes. Re-logs in proactively if needed, so a timed-out session does not cost a queue retry. Placed here, after validation and the completed-check, so only requests that will touch SauceDemo pay for it." DisplayName="Invoke EnsureSauceDemoSession workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Framework\EnsureSauceDemoSession.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+              <InArgument x:TypeArguments="ui:UiElement" x:Key="in_SauceDemoBrowser">[in_SauceDemoBrowser]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" sap2010:Annotation.AnnotationText="Finds the requested product on the SauceDemo inventory page and returns its exact name and USD price. Throws a BusinessRuleException when the product is not available." DisplayName="Invoke GetProductPrice workflow" sap:VirtualizedContainerService.HintSize="451.2,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Framework\GetProductPrice.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <OutArgument x:TypeArguments="x:Decimal" x:Key="out_PriceUSD">[decPriceUSD]</OutArgument>
@@ -188,6 +194,11 @@
               <InArgument x:TypeArguments="x:String" x:Key="in_Currency">[in_TransactionResult("PreferredCurrency").ToString]</InArgument>
               <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
           </ui:InvokeWorkflowFile>
           <Assign sap2010:Annotation.AnnotationText="Decimal math keeps 29.99 x 0.89205 exact; only the final price is rounded (2 decimals, .5 rounds up). The rounded value is what the employee sees, so it is also what is checked against the limit." DisplayName="Calculate converted price" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_4">
             <Assign.To>
@@ -218,7 +229,7 @@
               <InArgument x:TypeArguments="x:Object">[decConvertedPrice]</InArgument>
             </Assign.Value>
           </Assign>
-          <If sap2010:Annotation.AnnotationText="Converted price and limit are both in the preferred currency. Uses the listed product price (shipping/tax are captured separately at checkout). Equal to the limit is allowed; only strictly greater is rejected." Condition="[decConvertedPrice &gt; CDec(in_TransactionResult(&quot;PurchaseLimit&quot;))]" DisplayName="If price exceeds purchase limit" sap:VirtualizedContainerService.HintSize="451.2,327.2" sap2010:WorkflowViewState.IdRef="If_2">
+          <If sap2010:Annotation.AnnotationText="Converted price and limit are both in the preferred currency. Uses the listed product price (shipping/tax are captured separately at checkout). Equal to the limit is allowed; only strictly greater is rejected." Condition="[decConvertedPrice &gt; CDec(in_TransactionResult(&quot;PurchaseLimit&quot;))]" DisplayName="If price exceeds purchase limit" sap:VirtualizedContainerService.HintSize="451.2,336" sap2010:WorkflowViewState.IdRef="If_2">
             <If.Then>
               <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,173.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
                 <sap:WorkflowViewStateService.ViewState>
@@ -230,6 +241,13 @@
               </Sequence>
             </If.Then>
           </If>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" sap2010:Annotation.AnnotationText="Only reached when the request passed every business check. Buys the product and writes totals, tax, CheckoutCompleted and Confirmation into in_TransactionResult (no Out arguments: values survive even if a later step throws)." DisplayName="Invoke CompleteCheckout workflow" sap:VirtualizedContainerService.HintSize="451.2,167.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\CompleteCheckout.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_TransactionResult">[in_TransactionResult]</InArgument>
+              <InArgument x:TypeArguments="ui:UiElement" x:Key="in_SauceDemoBrowser">[in_SauceDemoBrowser]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
         </Sequence>
       </If.Else>
     </If>

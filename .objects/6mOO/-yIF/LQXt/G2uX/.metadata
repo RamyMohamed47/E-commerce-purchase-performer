@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Reset App State",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "G2uXgn8eA0yIThrO25ccSw",
+  "Reference": "Y6t2V4z8mESCz6OvpfNcaw/G2uXgn8eA0yIThrO25ccSw",
+  "ParentRef": "Y6t2V4z8mESCz6OvpfNcaw/LQXtcWkeD06XZnDHqOkFiw",
+  "Created": "2026-11-08T22:02:24.7257536Z",
+  "Updated": "2026-11-08T22:02:24.7257536Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.6.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
