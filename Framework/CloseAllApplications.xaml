@@ -74,7 +74,7 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Do the necessary procedures for ending the process (e.g., logout) and close the used applications." DisplayName="Close All Applications" sap:VirtualizedContainerService.HintSize="767.6,460" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap2010:Annotation.AnnotationText="Do the necessary procedures for ending the process (e.g., logout) and close the used applications." DisplayName="Close All Applications" sap:VirtualizedContainerService.HintSize="855.6,512.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -82,7 +82,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log message (close applications)" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Closing applications...&quot;]" />
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Always]" ContinueOnError="True" DisplayName="Edge Swag Labs" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="451.2,231.2" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="556ce422-8222-42b2-9721-bef05d87d514" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Always]" ContinueOnError="True" DisplayName="Edge Swag Labs" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="451.2,284" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="556ce422-8222-42b2-9721-bef05d87d514" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -105,7 +105,7 @@
         </ActivityFunc>
       </uix:NApplicationCard.OCREngine>
       <uix:NApplicationCard.TargetApp>
-        <uix:TargetApp Area="1911, -9, 1618, 982" BrowserType="Edge" ContentHash="TYDaC3uE50CCsk29p0tjLw" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAF3SURBVDhPfVNLK0VRGPUoMWMgGZhISorERPes8gvkkTlDwtiEmSlnjaQYycxAmPgJiAzkdZdESBHFxCOPPu1923d3smp1Hvtb66z97e+UlDhArIa4CvET4k/EL4jDvjYTEAchvmWIjTcQW2JNAYnmyyAuZwg915J8WhHrCoDYAPEsEHxAvIR4DlEQpyA2QmwKWJtcsNQbDDmRN9iF2AyxDmKHe76HeBdwD2K/j78URZ4N0vX+05t9K7Bop8HLF4g9Js5prhTiQobQc8cMRqIvnEDMWdchdkJch3jsPhLW2dFOm8FG5PoO8QHiE8QV14caSwXxMaizPnSZgUWOoxm/IY4FvRiP1jeRT6tswYYkFhtv/fAkSiv/BMXrE955AOI2xIOAhzY8ELshtkPsc8foxXbf5tOZSZX7Fzxtz4sQXyE+u6ttyRtsIZ9WFgxiQKyHeJSxLc/JWFMEmzB3GrHQeA2xNdYUAeKMa+JVQBPaPIwm+bTc1/4C4RnjWlmxHYMAAAAASUVORK5CYII=" InformativeScreenshot="80d0d08dcda7ba5713fd9afebe6dce6d.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/LQXtcWkeD06XZnDHqOkFiw" Selector="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" Version="V3">
+        <uix:TargetApp Area="1911, -9, 1618, 982" BrowserType="Edge" ContentHash="a-WzGkNSqEekjbMMRBgfXg" InformativeScreenshot="dc73cb7e9f0da59a2ccef525916705c5.jpg" Reference="Y6t2V4z8mESCz6OvpfNcaw/LQXtcWkeD06XZnDHqOkFiw" Selector="&lt;html app='msedge.exe' title='Swag Labs' /&gt;" Url="https://www.saucedemo.com/" Version="V3">
           <uix:TargetApp.SapInfo>
             <uix:SAPElementInfo IsSapSubsystem="False" WebAutomationFramework="Default" />
           </uix:TargetApp.SapInfo>

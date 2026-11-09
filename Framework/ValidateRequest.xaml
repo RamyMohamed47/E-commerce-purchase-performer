@@ -92,9 +92,11 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.Linq.Parallel</AssemblyReference>
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Validates the purchase request carried by the queue item before any application is touched.&#xA;Every present field is copied (trimmed) into in_TransactionResult so later steps and the report use one clean source.&#xA;All problems are collected first and thrown together as a single BusinessRuleException, so the request is rejected (not retried) with a complete reason." DisplayName="ValidateRequest" sap:VirtualizedContainerService.HintSize="767.6,3377.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Validates the purchase request carried by the queue item before any application is touched.&#xA;Every present field is copied (trimmed) into in_TransactionResult so later steps and the report use one clean source.&#xA;All problems are collected first and thrown together as a single BusinessRuleException, so the request is rejected (not retried) with a complete reason." DisplayName="ValidateRequest" sap:VirtualizedContainerService.HintSize="918.8000000000001,3274.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Default="[{&quot;RequestId&quot;,&quot;EmployeeName&quot;,&quot;EmployeeEmail&quot;,&quot;FirstName&quot;,&quot;LastName&quot;,&quot;PostalCode&quot;,&quot;ProductName&quot;,&quot;PreferredCurrency&quot;,&quot;PurchaseLimit&quot;}]" Name="arrRequiredFields" />
       <Variable x:TypeArguments="x:Decimal" Name="decLimit" />
@@ -106,7 +108,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ForEach x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Fields the Dispatcher puts in the queue item's SpecificContent and that the Performer needs (checkout, conversion, report, emails)." CurrentIndex="{x:Null}" DisplayName="For Each required field" sap:VirtualizedContainerService.HintSize="486.4,864" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arrRequiredFields]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Fields the Dispatcher puts in the queue item's SpecificContent and that the Performer needs (checkout, conversion, report, emails)." DisplayName="For Each required field" sap:VirtualizedContainerService.HintSize="486.4,864" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arrRequiredFields]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
@@ -155,10 +157,15 @@
           </Sequence>
         </ActivityAction>
       </ui:ForEach.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
-    <If sap2010:Annotation.AnnotationText="Skipped when the field was missing: that error is already recorded by the loop above." Condition="[in_TransactionResult.ContainsKey(&quot;PreferredCurrency&quot;)]" DisplayName="If preferred currency present" sap:VirtualizedContainerService.HintSize="486.4,841.6" sap2010:WorkflowViewState.IdRef="If_2">
+    <If sap2010:Annotation.AnnotationText="Skipped when the field was missing: that error is already recorded by the loop above." Condition="[in_TransactionResult.ContainsKey(&quot;PreferredCurrency&quot;)]" DisplayName="If preferred currency present" sap:VirtualizedContainerService.HintSize="486.4,776" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484.8,646.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484.8,613.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -172,7 +179,7 @@
               <InArgument x:TypeArguments="x:Object">[in_TransactionResult("PreferredCurrency").ToString.ToUpperInvariant]</InArgument>
             </Assign.Value>
           </Assign>
-          <If sap2010:Annotation.AnnotationText="Allowed currencies come from Config (Constants sheet, SupportedCurrencies, comma-separated). Entries are trimmed and upper-cased, so 'usd, eur ,GBP' also works." Condition="[Not in_Config(&quot;SupportedCurrencies&quot;).ToString.Split(&quot;,&quot;c).Select(Function(c) c.Trim.ToUpperInvariant).Contains(in_TransactionResult(&quot;PreferredCurrency&quot;).ToString)]" DisplayName="If currency not supported" sap:VirtualizedContainerService.HintSize="451.2,412" sap2010:WorkflowViewState.IdRef="If_3">
+          <If sap2010:Annotation.AnnotationText="Allowed currencies come from Config (Constants sheet, SupportedCurrencies, comma-separated). Entries are trimmed and upper-cased, so 'usd, eur ,GBP' also works." Condition="[Not in_Config(&quot;SupportedCurrencies&quot;).ToString.Split(&quot;,&quot;c).Select(Function(c) c.Trim.ToUpperInvariant).Contains(in_TransactionResult(&quot;PreferredCurrency&quot;).ToString)]" DisplayName="If currency not supported" sap:VirtualizedContainerService.HintSize="451.2,379.2" sap2010:WorkflowViewState.IdRef="If_3">
             <If.Then>
               <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,225.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
                 <sap:WorkflowViewStateService.ViewState>
@@ -187,7 +194,7 @@
         </Sequence>
       </If.Then>
     </If>
-    <If sap2010:Annotation.AnnotationText="Skipped when the field was missing: that error is already recorded by the loop above." Condition="[in_TransactionResult.ContainsKey(&quot;PurchaseLimit&quot;)]" DisplayName="If purchase limit present" sap:VirtualizedContainerService.HintSize="486.4,868" sap2010:WorkflowViewState.IdRef="If_4">
+    <If sap2010:Annotation.AnnotationText="Skipped when the field was missing: that error is already recorded by the loop above." Condition="[in_TransactionResult.ContainsKey(&quot;PurchaseLimit&quot;)]" DisplayName="If purchase limit present" sap:VirtualizedContainerService.HintSize="486.4,835.2" sap2010:WorkflowViewState.IdRef="If_4">
       <If.Then>
         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484.8,672.8" sap2010:WorkflowViewState.IdRef="Sequence_10">
           <sap:WorkflowViewStateService.ViewState>
@@ -195,7 +202,12 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If sap2010:Annotation.AnnotationText="TryParse fills decLimit in place. InvariantCulture keeps '1500.50' meaning the same on any robot locale; NumberStyles.Number also accepts '1,500.50'. Decimal (not Double) avoids rounding errors on money." Condition="[Decimal.TryParse(in_TransactionResult(&quot;PurchaseLimit&quot;).ToString, NumberStyles.Number, CultureInfo.InvariantCulture, decLimit) AndAlso decLimit &gt; 0]" DisplayName="If purchase limit is a positive number" sap:VirtualizedContainerService.HintSize="451.2,612.8" sap2010:WorkflowViewState.IdRef="If_5">
+          <If sap2010:Annotation.AnnotationText="Checks the limit is a positive number without throwing: bad text (e.g. 'abc') becomes a validation error and a clean rejection. InvariantCulture keeps '1500.50' meaning the same on any robot locale; NumberStyles.Number also accepts '1,500.50'. Note: in a workflow expression the out variable (decLimit) is a copy that is not written back, so the Assign below parses the value itself." Condition="[Decimal.TryParse(in_TransactionResult(&quot;PurchaseLimit&quot;).ToString, NumberStyles.Number, CultureInfo.InvariantCulture, decLimit) AndAlso decLimit &gt; 0]" DisplayName="If purchase limit is a positive number" sap:VirtualizedContainerService.HintSize="451.2,612.8" sap2010:WorkflowViewState.IdRef="If_5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
             <If.Then>
               <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,225.6" sap2010:WorkflowViewState.IdRef="Sequence_11">
                 <sap:WorkflowViewStateService.ViewState>
@@ -203,13 +215,18 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign sap2010:Annotation.AnnotationText="Replace the text value with the parsed Decimal so the budget check compares numbers, not strings." DisplayName="Store purchase limit as Decimal" sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+                <Assign sap2010:Annotation.AnnotationText="Replace the text value with the parsed Decimal so the budget check compares numbers, not strings. Parse is safe here: the If above already confirmed the text is a positive number." DisplayName="Store purchase limit as Decimal" sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="Assign_3">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Object">[in_TransactionResult("PurchaseLimit")]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
-                    <InArgument x:TypeArguments="x:Object">[decLimit]</InArgument>
+                    <InArgument x:TypeArguments="x:Object">[Decimal.Parse(in_TransactionResult("PurchaseLimit").ToString, NumberStyles.Number, CultureInfo.InvariantCulture)]</InArgument>
                   </Assign.Value>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
                 </Assign>
               </Sequence>
             </If.Then>
@@ -227,7 +244,7 @@
         </Sequence>
       </If.Then>
     </If>
-    <If sap2010:Annotation.AnnotationText="Basic shape check (something@domain.tld) so notification emails are not sent to an obviously broken address. AndAlso skips the check when the field was missing." Condition="[in_TransactionResult.ContainsKey(&quot;EmployeeEmail&quot;) AndAlso Not Regex.IsMatch(in_TransactionResult(&quot;EmployeeEmail&quot;).ToString, &quot;^[^@\s]+@[^@\s]+\.[^@\s]+$&quot;)]" DisplayName="If email format invalid" sap:VirtualizedContainerService.HintSize="486.4,420.8" sap2010:WorkflowViewState.IdRef="If_6">
+    <If sap2010:Annotation.AnnotationText="Basic shape check (something@domain.tld) so notification emails are not sent to an obviously broken address. AndAlso skips the check when the field was missing." Condition="[in_TransactionResult.ContainsKey(&quot;EmployeeEmail&quot;) AndAlso Not Regex.IsMatch(in_TransactionResult(&quot;EmployeeEmail&quot;).ToString, &quot;^[^@\s]+@[^@\s]+\.[^@\s]+$&quot;)]" DisplayName="If email format invalid" sap:VirtualizedContainerService.HintSize="486.4,388" sap2010:WorkflowViewState.IdRef="If_6">
       <If.Then>
         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,225.6" sap2010:WorkflowViewState.IdRef="Sequence_14">
           <sap:WorkflowViewStateService.ViewState>
@@ -239,7 +256,7 @@
         </Sequence>
       </If.Then>
     </If>
-    <If Condition="[lstErrors.Count &gt; 0]" DisplayName="If any validation errors" sap:VirtualizedContainerService.HintSize="486.4,360" sap2010:WorkflowViewState.IdRef="If_7">
+    <If Condition="[lstErrors.Count &gt; 0]" DisplayName="If any validation errors" sap:VirtualizedContainerService.HintSize="486.4,327.2" sap2010:WorkflowViewState.IdRef="If_7">
       <If.Then>
         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,173.6" sap2010:WorkflowViewState.IdRef="Sequence_16">
           <sap:WorkflowViewStateService.ViewState>
