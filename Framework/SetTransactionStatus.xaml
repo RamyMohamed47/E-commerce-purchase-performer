@@ -164,6 +164,33 @@
                       </Catch>
                     </TryCatch.Catches>
                   </TryCatch>
+                  <TryCatch sap2010:Annotation.AnnotationText="Runs AFTER the report row is written. An email failure is only logged: the outcome stays as recorded and the item is not retried, so nothing is bought twice." DisplayName="Try send employee email (Completed)" sap2010:WorkflowViewState.IdRef="TryCatch_18">
+                    <TryCatch.Try>
+                      <Sequence DisplayName="Try" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke SendEmployeeEmail workflow (Completed)" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Framework\SendEmployeeEmail.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_TransactionResult">[in_TransactionResult]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_RequestId">[in_TransactionID]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_FinalStatus">[&quot;Completed&quot;]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_StatusReason">[&quot;&quot;]</InArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                        </ui:InvokeWorkflowFile>
+                      </Sequence>
+                    </TryCatch.Try>
+                    <TryCatch.Catches>
+                      <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_21">
+                        <ActivityAction x:TypeArguments="s:Exception">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Catch" sap2010:WorkflowViewState.IdRef="Sequence_53">
+                            <ui:LogMessage DisplayName="Log employee email failed (Completed)" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Error" Message="[&quot;Could not send the employee email for &quot; &amp; in_TransactionID &amp; &quot;: &quot; &amp; exception.Message]" />
+                          </Sequence>
+                        </ActivityAction>
+                      </Catch>
+                    </TryCatch.Catches>
+                  </TryCatch>
                 </Sequence>
               </If.Then>
             </If>
@@ -419,6 +446,33 @@
                     </Catch>
                   </TryCatch.Catches>
                 </TryCatch>
+                <TryCatch sap2010:Annotation.AnnotationText="Runs AFTER the report row is written. An email failure is only logged: the outcome stays as recorded and the item is not retried, so nothing is bought twice." DisplayName="Try send employee email (Rejected)" sap2010:WorkflowViewState.IdRef="TryCatch_19">
+                  <TryCatch.Try>
+                    <Sequence DisplayName="Try" sap2010:WorkflowViewState.IdRef="Sequence_54">
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke SendEmployeeEmail workflow (Rejected)" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Framework\SendEmployeeEmail.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_TransactionResult">[in_TransactionResult]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_RequestId">[in_TransactionID]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_FinalStatus">[&quot;Rejected&quot;]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_StatusReason">[in_BusinessException.Message]</InArgument>
+                        </ui:InvokeWorkflowFile.Arguments>
+                      </ui:InvokeWorkflowFile>
+                    </Sequence>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_22">
+                      <ActivityAction x:TypeArguments="s:Exception">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Catch" sap2010:WorkflowViewState.IdRef="Sequence_55">
+                          <ui:LogMessage DisplayName="Log employee email failed (Rejected)" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Error" Message="[&quot;Could not send the employee email for &quot; &amp; in_TransactionID &amp; &quot;: &quot; &amp; exception.Message]" />
+                        </Sequence>
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                </TryCatch>
                 <If Condition="[in_TransactionItem isNot Nothing AndAlso (in_TransactionItem.GetType is GetType(Uipath.Core.QueueItem))]" DisplayName="If TransactionItem is a QueueItem (Business Exception)" sap:VirtualizedContainerService.HintSize="514.6666666666666,957.3333333333334" sap2010:WorkflowViewState.IdRef="If_5">
                   <If.Then>
                     <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Set Transaction Status (Business Exception)" sap:VirtualizedContainerService.HintSize="480.6666666666667,660" sap2010:WorkflowViewState.IdRef="RetryScope_3" NumberOfRetries="[Cint(in_Config(&quot;RetryNumberSetTransactionStatus&quot;))]">
@@ -564,6 +618,33 @@
                               </ActivityAction.Argument>
                               <Sequence DisplayName="Catch" sap2010:WorkflowViewState.IdRef="Sequence_49">
                                 <ui:LogMessage DisplayName="Log report update failed (Completed after error)" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Error" Message="[&quot;Could not update the processing report for &quot; &amp; in_TransactionID &amp; &quot;: &quot; &amp; exception.Message]" />
+                              </Sequence>
+                            </ActivityAction>
+                          </Catch>
+                        </TryCatch.Catches>
+                      </TryCatch>
+                      <TryCatch sap2010:Annotation.AnnotationText="Runs AFTER the report row is written. An email failure is only logged: the outcome stays as recorded and the item is not retried, so nothing is bought twice." DisplayName="Try send employee email (Completed after error)" sap2010:WorkflowViewState.IdRef="TryCatch_20">
+                        <TryCatch.Try>
+                          <Sequence DisplayName="Try" sap2010:WorkflowViewState.IdRef="Sequence_56">
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke SendEmployeeEmail workflow (Completed after error)" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Framework\SendEmployeeEmail.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_TransactionResult">[in_TransactionResult]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_RequestId">[in_TransactionID]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_FinalStatus">[&quot;Completed&quot;]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_StatusReason">[&quot;&quot;]</InArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                          </Sequence>
+                        </TryCatch.Try>
+                        <TryCatch.Catches>
+                          <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_23">
+                            <ActivityAction x:TypeArguments="s:Exception">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Catch" sap2010:WorkflowViewState.IdRef="Sequence_57">
+                                <ui:LogMessage DisplayName="Log employee email failed (Completed after error)" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Error" Message="[&quot;Could not send the employee email for &quot; &amp; in_TransactionID &amp; &quot;: &quot; &amp; exception.Message]" />
                               </Sequence>
                             </ActivityAction>
                           </Catch>
